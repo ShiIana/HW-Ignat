@@ -1,13 +1,13 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react'
+import React, {ChangeEvent, KeyboardEvent, MouseEvent, FocusEvent, useState} from 'react'
 import s from './Greeting.module.css'
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
+    name: string
+    setNameCallback: (name: string) => void // need to fix any
     addUser: any // need to fix any
     onBlur: any // need to fix any
     onEnter: any // need to fix any
-    error: any // need to fix any
+    error: string // need to fix any
     totalUsers: any // need to fix any
     lastUserName?: any // need to fix any
 }
@@ -25,7 +25,26 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = s.errorInput // need to fix with (?:)
+    const inputClass = error ? s.errorInput : s.input;
+
+    const [inputValue, setInputValue] = useState<string>('');
+
+    const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+        setNameCallback(evt.currentTarget.value);
+        setInputValue(evt.currentTarget.value);
+    }
+
+    const onAddHandler = (evt: MouseEvent<HTMLButtonElement>) => {
+        addUser(inputValue);
+    }
+
+    const onPressHandler = (evt: KeyboardEvent<HTMLInputElement>) => {
+        onEnter(evt);
+    }
+
+    const onBlurHandler = (evt: FocusEvent<HTMLInputElement>) => {
+        onBlur(evt.currentTarget.value);
+    }
 
     return (
         <div id={'hw3-form'} className={s.greetingForm}>
@@ -41,10 +60,10 @@ const Greeting: React.FC<GreetingPropsType> = (
                     <input
                         id={'hw3-input'}
                         value={name}
-                        onChange={setNameCallback}
+                        onChange={onChangeHandler}
                         className={inputClass}
-                        onKeyDown={onEnter}
-                        onBlur={onBlur}
+                        onKeyDown={onPressHandler}
+                        onBlur={onBlurHandler}
                     />
                     <div id={'hw3-error'} className={s.error}>
                         {error}
@@ -53,7 +72,7 @@ const Greeting: React.FC<GreetingPropsType> = (
 
                 <button
                     id={'hw3-button'}
-                    onClick={addUser}
+                    onClick={onAddHandler}
                     className={s.button}
                     disabled={!name.trim()}
                 >
