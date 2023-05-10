@@ -7,31 +7,27 @@ type GreetingContainerPropsType = {
     addUserCallback: (name: string) => void
 }
 
-export const pureAddUser = (name: string, setError: any, setName: any, addUserCallback: any) => {
+export const pureAddUser = (name: string, setError: (value: string) => void, setName: (value: string) => void, addUserCallback: (value: string) => void) => {
     if (name.trim() === '') {
         setError('Ошибка! Введите имя!');
     } else {
         addUserCallback(name);
-        setError('');
+
+        setName('');
     }
 }
 
-export const pureOnBlur = (name: string, setError: any) => {
+export const pureOnBlur = (name: string, setError: (value: string) => void) => {
     if (name.trim() === '') {
         setError('Ошибка! Введите имя!');
     }
 }
 
-export const pureOnEnter = (evt: KeyboardEvent<HTMLInputElement>, addUser: any) => {
-    if (evt.code === 'Enter') {
-        addUser(evt.currentTarget.value);
-    }
+export const pureOnEnter = (evt: KeyboardEvent<HTMLInputElement>, addUser: () => void) => {
+    if (evt.key !== 'Enter') return;
+    addUser();
 }
 
-// более простой и понятный для новичков
-// function GreetingContainer(props: GreetingPropsType) {
-
-// более современный и удобный для про :)
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
                                                                      users,
                                                                      addUserCallback,
@@ -44,16 +40,16 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         setName(name);
         error && setError('');
     }
-    const addUser = (name: string) => {
-        pureAddUser(name, setError, setName, addUserCallback)
+    const addUser = () => {
+        pureAddUser(name, setError, setName, addUserCallback);
     }
 
     const onBlur = (name: string) => {
-        pureOnBlur(name, setError)
+        pureOnBlur(name, setError);
     }
 
     const onEnter = (evt: KeyboardEvent<HTMLInputElement>) => {
-        pureOnEnter(evt, addUser)
+        pureOnEnter(evt, addUser);
     }
 
     const totalUsers: number = users.length;

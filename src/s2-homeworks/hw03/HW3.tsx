@@ -23,7 +23,7 @@ export type UserType = {
     name: string
 }
 
-export const pureAddUserCallback = (name: string, setUsers: any, users: Array<UserType>) => {
+export const pureAddUserCallback = (name: string, setUsers: (value: Array<UserType>) => void, users: Array<UserType>) => {
     const user: UserType = {
         _id: v1(),
         name: name,

@@ -3,15 +3,14 @@ import s from './Greeting.module.css'
 
 type GreetingPropsType = {
     name: string
-    setNameCallback: (name: string) => void // need to fix any
-    addUser: any // need to fix any
-    onBlur: any // need to fix any
-    onEnter: any // need to fix any
-    error: string // need to fix any
-    totalUsers: any // need to fix any
-    lastUserName?: any // need to fix any
+    setNameCallback: (name: string) => void
+    addUser: (name: string) => void
+    onBlur: (name: string) => void
+    onEnter: (evt: KeyboardEvent<HTMLInputElement>) => void
+    error: string
+    totalUsers: number
+    lastUserName?: string
 }
-
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
     {
