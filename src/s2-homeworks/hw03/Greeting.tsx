@@ -1,16 +1,17 @@
-import React, {ChangeEvent, KeyboardEvent, MouseEvent, FocusEvent, useState} from 'react'
+import React, {ChangeEvent, KeyboardEvent} from 'react'
 import s from './Greeting.module.css'
 
 type GreetingPropsType = {
-    name: string
-    setNameCallback: (name: string) => void
-    addUser: (name: string) => void
-    onBlur: (name: string) => void
-    onEnter: (evt: KeyboardEvent<HTMLInputElement>) => void
-    error: string
-    totalUsers: number
-    lastUserName?: string
+    name: string // need to fix any
+    setNameCallback: (evt: ChangeEvent<HTMLInputElement>) => void // need to fix any
+    addUser: () => void // need to fix any
+    onBlur: () => void // need to fix any
+    onEnter: (evt: KeyboardEvent<HTMLInputElement>) => void // need to fix any
+    error: string // need to fix any
+    totalUsers: number // need to fix any
+    lastUserName?: string // need to fix any
 }
+
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
     {
@@ -24,25 +25,22 @@ const Greeting: React.FC<GreetingPropsType> = (
         lastUserName,
     } // деструктуризация пропсов
 ) => {
-    const inputClass = error ? s.errorInput : s.input;
+    const inputClass = error ? s.errorInput : s.input// need to fix with (?:)
 
-    const [inputValue, setInputValue] = useState<string>('');
-
-    const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
-        setNameCallback(evt.currentTarget.value);
-        setInputValue(evt.currentTarget.value);
+    const onBlurHandler = () => {
+        onBlur();
     }
 
-    const onAddHandler = (evt: MouseEvent<HTMLButtonElement>) => {
-        addUser(inputValue);
-    }
-
-    const onPressHandler = (evt: KeyboardEvent<HTMLInputElement>) => {
+    const onEnterHandler = (evt: KeyboardEvent<HTMLInputElement>) => {
         onEnter(evt);
     }
 
-    const onBlurHandler = (evt: FocusEvent<HTMLInputElement>) => {
-        onBlur(evt.currentTarget.value);
+    const setNameCallbackHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+        setNameCallback(evt);
+    }
+
+    const addUserHandler = () => {
+        addUser();
     }
 
     return (
@@ -59,9 +57,9 @@ const Greeting: React.FC<GreetingPropsType> = (
                     <input
                         id={'hw3-input'}
                         value={name}
-                        onChange={onChangeHandler}
+                        onChange={setNameCallbackHandler}
                         className={inputClass}
-                        onKeyDown={onPressHandler}
+                        onKeyDown={onEnterHandler}
                         onBlur={onBlurHandler}
                     />
                     <div id={'hw3-error'} className={s.error}>
@@ -71,7 +69,7 @@ const Greeting: React.FC<GreetingPropsType> = (
 
                 <button
                     id={'hw3-button'}
-                    onClick={onAddHandler}
+                    onClick={addUserHandler}
                     className={s.button}
                     disabled={!name.trim()}
                 >
