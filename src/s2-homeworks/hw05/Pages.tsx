@@ -15,7 +15,7 @@ function Pages() {
     return (
         <div>
             <Routes>
-                <Route path={'/'} element={<PreJunior/>} />
+                <Route path={'/'} element={<Navigate to={'/pre-junior'}/>}/>
                 <Route path={'/pre-junior'} element={<PreJunior/>} />
                 <Route path={'/junior'} element={<Junior/>} />
                 <Route path={'/junior-plus'} element={<JuniorPlus/>} />
