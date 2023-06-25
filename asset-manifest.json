@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/HW-Ignat/static/css/main.1c05c68f.css",
-    "main.js": "/HW-Ignat/static/js/main.ffb6fe57.js",
+    "main.css": "/HW-Ignat/static/css/main.a5d8f1d4.css",
+    "main.js": "/HW-Ignat/static/js/main.f263b658.js",
     "static/js/787.cd74b8f8.chunk.js": "/HW-Ignat/static/js/787.cd74b8f8.chunk.js",
     "static/media/Montserrat-Regular.woff2": "/HW-Ignat/static/media/Montserrat-Regular.58a8d7ebc386843b62c5.woff2",
     "static/media/avatar.png": "/HW-Ignat/static/media/avatar.d947cb9d0d13765666b6.png",
@@ -11,12 +11,12 @@
     "static/media/checked.svg": "/HW-Ignat/static/media/checked.b75ca55e8759862b4083.svg",
     "index.html": "/HW-Ignat/index.html",
     "static/media/burger.svg": "/HW-Ignat/static/media/burger.700e416f7bfe3697f96b36c778d25355.svg",
-    "main.1c05c68f.css.map": "/HW-Ignat/static/css/main.1c05c68f.css.map",
-    "main.ffb6fe57.js.map": "/HW-Ignat/static/js/main.ffb6fe57.js.map",
+    "main.a5d8f1d4.css.map": "/HW-Ignat/static/css/main.a5d8f1d4.css.map",
+    "main.f263b658.js.map": "/HW-Ignat/static/js/main.f263b658.js.map",
     "787.cd74b8f8.chunk.js.map": "/HW-Ignat/static/js/787.cd74b8f8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c05c68f.css",
-    "static/js/main.ffb6fe57.js"
+    "static/css/main.a5d8f1d4.css",
+    "static/js/main.f263b658.js"
   ]
 }
