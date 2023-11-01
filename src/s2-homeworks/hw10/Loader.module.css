@@ -1,3 +1,20 @@
 .loader {
     /*свг и/или анимация*/
+  background-image: url("/public/Loading.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 108px;
+  height: 108px;
+  animation: 3s infinite rotateLoading;
+}
+
+@keyframes rotateLoading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
