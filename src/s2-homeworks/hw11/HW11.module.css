@@ -18,8 +18,6 @@
 .customThumb {
   border: 1px solid #0C2;
   color: #fff;
-  width: 18px;
-  height: 18px;
 }
 
 .customThumb::after {
