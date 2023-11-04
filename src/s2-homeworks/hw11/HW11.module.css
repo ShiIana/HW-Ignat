@@ -2,7 +2,8 @@
 }
 
 .wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 30px 147px 30px;
   align-items: center;
   gap: 20px;
   margin-bottom: 40px;
@@ -20,8 +21,8 @@
 }
 
 .customThumb::after {
-  width: 6px;
-  height: 6px;
+  width: 6px !important;
+  height: 6px !important;
   border-radius: 50%;
   background-color: #0C2;
 }
